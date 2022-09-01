@@ -146,11 +146,16 @@ function ScheduleChart() {
         noData: {
             text: 'Loading...'
         },
-        colors: ["#246dec",
-            "#cc3c43",
-            "#367852",
-            "#f5b74f",
-            "#4f35a1"],
+        colors: ["#cc3c43",
+        "#f5b74f",
+        "#ccec43",
+        "#367852",
+        "#246dec",            
+           
+            
+            "#4f35a1",
+            "#4f35ff",
+        ],
         plotOptions: {
             bar: {
                 horizontal: true
@@ -179,7 +184,7 @@ function ScheduleChart() {
             }
         },
         xaxis: {
-            type: 'datetime'
+            type: 'number'
         },
         legend: {
             position: 'top'
@@ -196,7 +201,7 @@ function ScheduleChart() {
                         options={options}
                         series={seriesh}
                         type="rangeBar"
-                        height="370"
+                        height="270"
                     />
                 </div>
             </div>

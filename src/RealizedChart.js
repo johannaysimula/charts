@@ -11,9 +11,6 @@ const command2 = [
     { "command": 'metrics', "mode": 'work' }
 ];
 
-//const areaChart = document.getElementById("areaChart")
-const timelineChart = document.getElementById("mixed-chart")
-// Create an array of cars to send to the server:
 
 
 function prepareMetricsData(response) {
@@ -52,8 +49,11 @@ function prepareMetricsData(response) {
 function RealizedChart() {
     
     const [jsonResponseBenefit, setjsonResponseBenefit] = useState([]);   
+    const [jsonResponseBenefitCummulative, setjsonResponseBenefitCummulative] = useState([]);   
     const [jsonResponseCost, setjsonResponseCost] = useState([]);   
+    const [jsonResponseCostCummulative, setjsonResponseCostCummulative] = useState([]);   
     const [jsonResponseBenefitCost, setjsonResponseBenefitCost] = useState([]);   
+    const [jsonResponseBenefitCostCummulative, setjsonResponseBenefitCostCummulative] = useState([]);   
 
 
     // Create an event listener on the button element:
@@ -80,11 +80,30 @@ function RealizedChart() {
                 // Now for the metrics
                 console.log("Now for the metrics", jsonResponse)
 
+                class serieselement {
+                    constructor(T, metric) {
+                        this.T = T;
+                        this.metric = metric;
+                    }
+                }
+
+                var benefitdata = jsonResponse.find(e => e.theme === 'benefit').data;
+                var benefitdatacummulative = benefitdata.map((sum => value => new serieselement(value.T, sum.metric += value.metric))({metric: 0}));
+
+                console.log("benefitdata", benefitdata)
+                console.log("benefitdatacummulative", benefitdatacummulative)
+                
 
 
-                setjsonResponseBenefit(prepareMetricsData(jsonResponse.find(e => e.theme === 'benefit').data));
+                setjsonResponseBenefit(prepareMetricsData(benefitdata));
+                setjsonResponseBenefitCummulative(prepareMetricsData(benefitdatacummulative));
+                
                 //console.log("jsonResponseBenefit: ", jsonResponseBenefit)
-                setjsonResponseCost(prepareMetricsData(jsonResponse.find(e => e.theme === 'cost').data));
+
+                var costdata = jsonResponse.find(e => e.theme === 'cost').data;
+                var costdatacummulative = costdata.map((sum => value => new serieselement(value.T, sum.metric += value.metric))({metric: 0}));
+                setjsonResponseCost(prepareMetricsData(costdata));
+                setjsonResponseCostCummulative(prepareMetricsData(costdatacummulative));
                 //console.log("jsonResponseCost: ", jsonResponseCost);
 
                 
@@ -113,12 +132,15 @@ function RealizedChart() {
        useEffect(() => {
         //if (inputFields.length==0) 
         var jrbc = [];
+        var jrbcCummulative = [];
 
                 for (let i = 0; i < jsonResponseCost.length; i++) {
                     jrbc[i] = (jsonResponseCost[i] === 0 ? 0 : jsonResponseBenefit[i] / jsonResponseCost[i])
+                    jrbcCummulative[i] = (jsonResponseCostCummulative[i] === 0 ? 0 : jsonResponseBenefitCummulative[i] / jsonResponseCostCummulative[i])
                 }
                 console.log("jrbc: ", jrbc)
                 setjsonResponseBenefitCost(jrbc);
+                setjsonResponseBenefitCostCummulative(jrbcCummulative);
        }, [jsonResponseBenefit]);
 
        
@@ -136,7 +158,7 @@ function RealizedChart() {
         noData: {
             text: 'Loading...'
         },
-        colors: ["#119911", "#990011", "#771177"],
+        colors: ["#0aeb0a", "crimson", "blueviolet"],
         dataLabels: {
             enabled: false,
         },
@@ -159,15 +181,38 @@ function RealizedChart() {
         data: jsonResponseBenefitCost
     }]
 
+    const seriesCummulative = [{
+        name: 'Benefit',
+        data: jsonResponseBenefitCummulative
+    }, {
+        name: 'Cost',
+        data: jsonResponseCostCummulative
+    }, {
+        name: 'Benefit/Cost',
+        data: jsonResponseBenefitCostCummulative
+    }]
+
     return (
         <div className="app">
+            <label>Entered into Production</label>
             <div className="row">
                 <div className="areaChart">
                     <Chart
                         options={options}
                         series={series}
                         type="area"
-                        height="350"
+                        height="250"
+                    />
+                </div>
+            </div>
+            <label>Cummulative</label>
+            <div className="row">
+                <div className="areaChart">
+                    <Chart
+                        options={options}
+                        series={seriesCummulative}
+                        type="area"
+                        height="250"
                     />
                 </div>
             </div>

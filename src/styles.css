@@ -1,11 +1,12 @@
-body{ 
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-background-color: #e6e8ed;
-color: #666666;
-font-family: "Comic Neue", sans-serif;
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #e6e8ed;
+    color: #1f1e1e;
+    font-family: "Comic Neue", sans-serif;
 }
+
 .material-icons-outlined {
     vertical-align: middle;
     line-height: 1px;
@@ -18,6 +19,7 @@ font-family: "Comic Neue", sans-serif;
 .text-blue {
     color: #246dec;
 }
+
 .text-red {
     color: #581d1d;
 }
@@ -34,17 +36,18 @@ font-family: "Comic Neue", sans-serif;
     font-weight: 600;
 }
 
-.grid-container{
+
+.grid-container {
     display: grid;
     grid-template-columns: 260px 1fr 1fr 1fr;
     grid-template-rows: 0.2fr 3fr;
-    grid-template-areas: 
-    "sidebar header header header"
-    "sidebar main main main";
+    grid-template-areas:
+        "sidebar header header header"
+        "sidebar main main main";
     height: 100vh;
 }
 
-.header{
+.header {
     grid-area: header;
     height: 70px;
     background-color: #ffffff;
@@ -52,7 +55,7 @@ font-family: "Comic Neue", sans-serif;
     align-items: center;
     justify-content: space-between;
     padding: 0 30px 0 30px;
-    box-shadow: 0 px 7px -4px rgb(0,0,0,0.2);
+    box-shadow: 0 px 7px -4px rgb(0, 0, 0, 0.2);
 }
 
 .menu-icon {
@@ -76,7 +79,7 @@ font-family: "Comic Neue", sans-serif;
     margin-bottom: 30px;
 }
 
-.sidebar-title > span {
+.sidebar-title>span {
     display: none;
 }
 
@@ -97,7 +100,7 @@ font-family: "Comic Neue", sans-serif;
 }
 
 .sidebar-list-item:hover {
-    background-color: rgba(255,255,255,0.2);
+    background-color: rgba(255, 255, 255, 0.2);
     cursor: pointer;
 }
 
@@ -106,16 +109,75 @@ font-family: "Comic Neue", sans-serif;
     position: absolute;
 }
 
+.epics-container {
+
+    size-adjust: True;
+    font-size: smaller;
+   
+}
+
+.parameter-container {
+
+    size-adjust: True;
+    font-size: smaller;
+   
+}
+
+.epics-container input[name='epic'] {
+    background-color: #dedfe2;
+      
+    text-align: center
+}
+
+.epics-container input[name='benefit'] {
+    background-color: #dedfe2;
+    color: #0aeb0a;
+    text-align: right;
+    
+}
+
+.epics-container input[name='cost'] {
+    color:crimson;
+    background-color: #dedfe2;
+    text-align: right
+}
+
+.epics-container input[name='time'] {
+    color:rgb(17, 4, 7);
+    background-color: #dedfe2;
+    text-align: right
+}
+
+.epics-container input[name='benefit/cost'] {
+    color:blueviolet;
+    background-color: rgb(185, 184, 184) ;
+    text-align: right
+}
+
+
+.parameters-container input[name='capacity'] {
+    
+    background-color: #dedfe2;
+    text-align: right
+    
+}
+
+.parameters-container input[name='horizon'] {
+    
+    background-color: #dedfe2;
+    text-align: right
+}
+
 .main-container {
     grid-area: main;
     overflow-y: auto;
     padding: 20px 20px;
-  }
-  
-  .main-title>p {
+}
+
+.main-title>p {
     font-size: 25px;
     font-weight: 600;
-  }
+}
 
 .main_cards {
     display: grid;
@@ -133,7 +195,7 @@ font-family: "Comic Neue", sans-serif;
     box-sizing: border-box;
     border: 1px solid #d2d2d3;
     border-radius: 5px;
-    box-shadow: 0 6px 7px -4px rgba(0,0,0,0.2);
+    box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
 }
 
 .card:nth-child(1) {
@@ -152,33 +214,33 @@ font-family: "Comic Neue", sans-serif;
     border-left: 7px solid #df600c;
 }
 
-.card > span {
+.card>span {
     font-size: 20px;
     font-weight: 600;
 }
 
 .card-inner {
-display: flex;
-align-items: center;
-justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.card-inner > p {
+.card-inner>p {
     font-size: 18px;
 }
 
-.card-inner > span {
+.card-inner>span {
     font-size: 35px;
 }
 
 
 .charts {
-    display: vertical;
+    display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-  }
-  
-  .charts-card {
+}
+
+.charts-card {
     background-color: #7d8d96;
     margin-bottom: 20px;
     padding: 20px;
@@ -187,16 +249,17 @@ justify-content: space-between;
     border: 3px solid #d2d2d3;
     border-radius: 5px;
     box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
-  }
-  
-  .chart-title {
+}
+
+.chart-title {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 22px;
     font-weight: 600;
-  }
-.recomputeButton {
+}
+
+.submitChagesButton {
     font-size: 22px;
     font-weight: 600;
 }
