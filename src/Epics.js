@@ -285,7 +285,7 @@ function Epics() {
                         <div key={index}>
                             <input
                                 name='epic'
-                                placeholder='epic'
+                                placeholder='epic name'
                                 value={input.epic}
                                 size="2"
                                 text-align='right'
