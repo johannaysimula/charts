@@ -3,6 +3,14 @@ import Chart from "react-apexcharts";
 
 import { useEffect,useState } from 'react';
 
+//const API_HOST = "http://localhost:3000";
+const CALC_HOST = "http://localhost:5000";
+const ASP_HOST = "http://localhost:5001/receiver";
+const API_HOST = "http://bcdam.ddns.net:3000";
+//const CALC_HOST = "http://bcdam.ddns.net:5000";
+const BACKLOG_API_URL = `${API_HOST}/backlog`;
+const PARAMETERS_API_URL = `${API_HOST}/parameters`;
+const CALCULATION_API_URL = `${CALC_HOST}/inventory`;
 
 //const button2 = document.getElementById("recomputeButton")
 //const data2 = document.getElementById("info")
@@ -60,7 +68,7 @@ function RealizedChart() {
     function Metrics() {
 
         // Get the reciever endpoint from Python using fetch:
-        fetch("http://127.0.0.1:5001/receiver",
+        fetch(`${ASP_HOST}`,
             {
                 method: 'POST',
                 headers: {
