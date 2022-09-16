@@ -6,13 +6,13 @@ import './App.css';
 
 //const API_HOST = "http://localhost:3000";
 //const CALC_HOST = "http://localhost:5000";
-const CALC_HOST = "http://bcdam-python-backend";
+const CALC_HOST = "https://bcdam-python-backend.herokuapp.com";
 //const API_HOST = "http://bcdam.ddns.net:3000";
 const API_HOST = "https://bcdam-json-server.herokuapp.com";
 //const CALC_HOST = "http://bcdam.ddns.net:5000";
 const BACKLOG_API_URL = `${API_HOST}/backlog`;
 const PARAMETERS_API_URL = `${API_HOST}/parameters`;
-const CALCULATION_API_URL = `${CALC_HOST}`;
+const CALCULATION_API_URL = `${CALC_HOST}/calculation`;
 
 function Epics() {
 
