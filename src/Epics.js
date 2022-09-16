@@ -127,8 +127,7 @@ function Epics() {
 
     }
 
-    const fetchCalculation = () => {
-        //alert("fetch calculation");
+    const fetchCalculation = () => {        
         fetch(`${CALCULATION_API_URL}`, {
             method: 'GET',      
             headers: {                   
@@ -137,7 +136,7 @@ function Epics() {
             }
         })
             .then(res => {
-                if (res.ok) {//alert("something is right")
+                if (res.ok) {
                     return res.json()
                 } else {
                     alert("something is wrong")
