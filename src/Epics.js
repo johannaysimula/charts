@@ -131,6 +131,7 @@ function Epics() {
         //alert("fetch calculation");
         fetch(`${CALCULATION_API_URL}`, {
             method: 'GET',
+            mode: "no-cors",
             headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
