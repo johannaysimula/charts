@@ -133,7 +133,7 @@ function Epics() {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json',
-                'Access-Control-Allow-Origin': 'application/json'
+                'Accept': 'application/json'
             }
         })
             .then(res => {
