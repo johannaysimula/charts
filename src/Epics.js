@@ -132,7 +132,7 @@ function Epics() {
         fetch(`${CALCULATION_API_URL}`, {
             method: 'GET',
             headers: {
-                'mode' : 'no-cors',            
+                'Mode' : 'no-cors',            
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
             }
