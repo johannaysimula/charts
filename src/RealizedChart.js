@@ -6,10 +6,10 @@ import Chart from "react-apexcharts";
 import { useEffect,useState } from 'react';
 
 //const API_HOST = "http://localhost:3000";
-const CALC_HOST = "http://localhost:5000";
-const ASP_HOST = "http://localhost:5001/receiver";
+//const ASP_HOST = "http://localhost:5001/receiver";
+const ASP_HOST = "https://bcdam-python-asp-service.herokuapp.com/receiver";
 
-//const CALC_HOST = "http://bcdam.ddns.net:5000";
+
 
 //const button2 = document.getElementById("recomputeButton")
 //const data2 = document.getElementById("info")
