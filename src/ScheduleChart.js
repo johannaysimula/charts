@@ -2,10 +2,12 @@ import React from "react";
 import Chart from "react-apexcharts";
 import { useEffect, useState } from 'react';
 
-const API_HOST = "http://localhost:3000";
+//const API_HOST = "http://localhost:3000";
+const API_HOST = "http://bcdam-json-server";
 //const API_HOST = "http://bcdam.ddns.net:3000";
 const BACKLOG_API_URL = `${API_HOST}/backlog`;
-const ASP_HOST = "http://localhost:5001/receiver";
+//const ASP_HOST = "http://localhost:5001/receiver";
+const ASP_HOST = "http://bcdam-python-asp-service/receiver";
 
 const command2 = [
     { "command": 'metrics', "mode": 'work' }
