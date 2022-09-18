@@ -7,7 +7,7 @@ const API_HOST = "https://bcdam-json-server";
 //const API_HOST = "http://bcdam.ddns.net:3000";
 const BACKLOG_API_URL = `${API_HOST}/backlog`;
 //const ASP_HOST = "http://localhost:5001/receiver";
-const ASP_HOST = "https://bcdam-python-asp-service/receiver";
+const ASP_HOST = "https://bcdam-python-asp-service.herokuapp.com/receiver";
 
 const command2 = [
     { "command": 'metrics', "mode": 'work' }
