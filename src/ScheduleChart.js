@@ -3,7 +3,7 @@ import Chart from "react-apexcharts";
 import { useEffect, useState } from 'react';
 
 //const API_HOST = "http://localhost:3000";
-const API_HOST = "https://bcdam-json-server";
+const API_HOST = "https://bcdam-json-server.herokuapp.com";
 //const API_HOST = "http://bcdam.ddns.net:3000";
 const BACKLOG_API_URL = `${API_HOST}/backlog`;
 //const ASP_HOST = "http://localhost:5001/receiver";
