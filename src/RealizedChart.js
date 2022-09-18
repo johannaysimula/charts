@@ -60,7 +60,8 @@ function RealizedChart() {
     const [jsonResponseCost, setjsonResponseCost] = useState([]);   
     const [jsonResponseCostCummulative, setjsonResponseCostCummulative] = useState([]);   
     const [jsonResponseBenefitCost, setjsonResponseBenefitCost] = useState([]);   
-    const [jsonResponseBenefitCostCummulative, setjsonResponseBenefitCostCummulative] = useState([]);   
+    const [jsonResponseBenefitCostCummulative, setjsonResponseBenefitCostCummulative] = useState([]);
+    const [jsonResponseBenefitXCostCummulative, setjsonResponseBenefitXCostCummulative] = useState([]);   
 
 
     // Create an event listener on the button element:
@@ -140,14 +141,17 @@ function RealizedChart() {
         //if (inputFields.length==0) 
         var jrbc = [];
         var jrbcCummulative = [];
+        var jrbcXCummulative = [];
 
                 for (let i = 0; i < jsonResponseCost.length; i++) {
                     jrbc[i] = (jsonResponseCost[i] === 0 ? 0 : jsonResponseBenefit[i] / jsonResponseCost[i])
                     jrbcCummulative[i] = (jsonResponseCostCummulative[i] === 0 ? 0 : jsonResponseBenefitCummulative[i] / jsonResponseCostCummulative[i])
+                    jrbcXCummulative[i] = [jsonResponseCost[i],jsonResponseBenefit[i]]
                 }
                 console.log("jrbc: ", jrbc)
                 setjsonResponseBenefitCost(jrbc);
                 setjsonResponseBenefitCostCummulative(jrbcCummulative);
+                setjsonResponseBenefitXCostCummulative(jrbcXCummulative);
        }, [jsonResponseBenefit]);
 
        
@@ -159,6 +163,28 @@ function RealizedChart() {
     
     const options = {
         toolbar: { show: false },
+        yaxis: {
+            decimalsInFloat: 2,
+        },
+        noData: {
+            text: 'Loading...'
+        },
+        colors: ["#0aeb0a", "crimson", "blueviolet"],
+        dataLabels: {
+            enabled: false,
+        },
+        stroke: {
+            curve: 'smooth'
+        },
+        //labels: ['Dec 01', 'Dec 02','Dec 03','Dec 04','Dec 05','Dec 06','Dec 07'],
+        markers: {
+            size: 0
+        }
+    };
+
+    const xoptions = {
+        toolbar: { show: false },
+        xaxis: {type: 'numeric'},
         yaxis: {
             decimalsInFloat: 2,
         },
@@ -199,6 +225,11 @@ function RealizedChart() {
         data: jsonResponseBenefitCostCummulative
     }]
 
+    const seriesXCummulative = [{
+        name: 'Benefit over Cost',
+        data: jsonResponseBenefitXCostCummulative
+    }]
+
     return (
         <div className="app">
             <label>Entered into Production</label>
@@ -218,6 +249,17 @@ function RealizedChart() {
                     <Chart
                         options={options}
                         series={seriesCummulative}
+                        type="area"
+                        height="250"
+                    />
+                </div>
+            </div>
+            <label>Benefit by Cost</label>
+            <div className="row">
+                <div className="areaChart">
+                    <Chart
+                        options={xoptions}
+                        series={seriesXCummulative}
                         type="area"
                         height="250"
                     />
