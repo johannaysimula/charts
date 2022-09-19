@@ -63,6 +63,11 @@ function RealizedChart() {
     const [jsonResponseBenefitCostCummulative, setjsonResponseBenefitCostCummulative] = useState([]);
     const [jsonResponseBenefitXCostCummulative, setjsonResponseBenefitXCostCummulative] = useState([]);   
 
+    const [jsonResponseBenefitConstruction, setjsonResponseBenefitConstruction] = useState([]);   
+    const [jsonResponseBenefitConstructionCummulative, setjsonResponseBenefitConstructionCummulative] = useState([]);   
+    const [jsonResponseCostConstruction, setjsonResponseCostConstruction] = useState([]);   
+    const [jsonResponseCostConstructionCummulative, setjsonResponseCostConstructionCummulative] = useState([]);   
+
 
     // Create an event listener on the button element:
     function Metrics() {
@@ -97,12 +102,8 @@ function RealizedChart() {
 
                 var benefitdata = jsonResponse.find(e => e.theme === 'benefit').data;
                 var benefitdatacummulative = benefitdata.map((sum => value => new serieselement(value.T, sum.metric += value.metric))({metric: 0}));
-
                 console.log("benefitdata", benefitdata)
-                console.log("benefitdatacummulative", benefitdatacummulative)
-                
-
-
+                console.log("benefitdatacummulative", benefitdatacummulative)             
                 setjsonResponseBenefit(prepareMetricsData(benefitdata));
                 setjsonResponseBenefitCummulative(prepareMetricsData(benefitdatacummulative));
                 
@@ -113,6 +114,21 @@ function RealizedChart() {
                 setjsonResponseCost(prepareMetricsData(costdata));
                 setjsonResponseCostCummulative(prepareMetricsData(costdatacummulative));
                 //console.log("jsonResponseCost: ", jsonResponseCost);
+
+                //Prepare benefit and cost data for construction graph:
+                var benefitdataconstruction = jsonResponse.find(e => e.theme === 'benefitconstruction').data;
+                var benefitdataconstructioncummulative = benefitdataconstruction.map((sum => value => new serieselement(value.T, sum.metric += value.metric))({metric: 0}));
+                console.log("benefitdataconstruction", benefitdataconstruction)
+                console.log("benefitdataconstructioncummulative", benefitdataconstructioncummulative)             
+                setjsonResponseBenefitConstruction(prepareMetricsData(benefitdataconstruction));
+                setjsonResponseBenefitConstructionCummulative(prepareMetricsData(benefitdataconstructioncummulative));
+
+                var costdataconstruction = jsonResponse.find(e => e.theme === 'costconstruction').data;
+                var costdataconstructioncummulative = costdataconstruction.map((sum => value => new serieselement(value.T, sum.metric += value.metric))({metric: 0}));
+                console.log("costdataconstruction", costdataconstruction)
+                console.log("costdataconstructioncummulative", costdataconstructioncummulative)             
+                setjsonResponseCostConstruction(prepareMetricsData(costdataconstruction));
+                setjsonResponseCostConstructionCummulative(prepareMetricsData(costdataconstructioncummulative));
 
                 
                 //return(jsonResponseBenefit)
@@ -254,7 +270,18 @@ function RealizedChart() {
                     />
                 </div>
             </div>
-            <label>Benefit by Cost</label>
+            <label>Benefit by Cost in Production</label>
+            <div className="row">
+                <div className="areaChart">
+                    <Chart
+                        options={xoptions}
+                        series={seriesXCummulative}
+                        type="area"
+                        height="250"
+                    />
+                </div>
+            </div>
+            <label>Benefit by Cost in Construction</label>
             <div className="row">
                 <div className="areaChart">
                     <Chart
