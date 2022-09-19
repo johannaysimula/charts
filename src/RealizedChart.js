@@ -265,7 +265,7 @@ function RealizedChart() {
 
     const seriesXConstructionCummulative = [{
         name: 'Benefit over Cost',
-        data: jsonResponseBenefitXCostCummulative
+        data: jsonResponseBenefitXCostConstructionCummulative
     }]
 
     return (
