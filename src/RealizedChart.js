@@ -158,11 +158,13 @@ function RealizedChart() {
         var jrbc = [];
         var jrbcCummulative = [];
         var jrbcXCummulative = [];
+        var jrbcConstructionXCummulative = [];
 
                 for (let i = 0; i < jsonResponseCost.length; i++) {
                     jrbc[i] = (jsonResponseCost[i] === 0 ? 0 : jsonResponseBenefit[i] / jsonResponseCost[i])
                     jrbcCummulative[i] = (jsonResponseCostCummulative[i] === 0 ? 0 : jsonResponseBenefitCummulative[i] / jsonResponseCostCummulative[i])
-                    jrbcXCummulative[i] = [jsonResponseCost[i],jsonResponseBenefit[i]]
+                    jrbcXCummulative[i] = [jsonResponseCostCummulative[i],jsonResponseBenefitCummulative[i]]
+                    jrbcConstructionXCummulative[i] = [jsonResponseCostConstructionCummulative[i],jsonResponseBenefitConstructionCummulative[i]]
                 }
                 console.log("jrbc: ", jrbc)
                 setjsonResponseBenefitCost(jrbc);
