@@ -6,8 +6,8 @@ import { useEffect, useState } from 'react';
 const API_HOST = "https://bcdam-json-server.herokuapp.com";
 //const API_HOST = "http://bcdam.ddns.net:3000";
 const BACKLOG_API_URL = `${API_HOST}/backlog`;
-const ASP_HOST = "http://localhost:5000/receiver";
-//const ASP_HOST = "https://bcdam-python-asp-service.herokuapp.com/receiver";
+//const ASP_HOST = "http://localhost:5000/receiver";
+const ASP_HOST = "https://bcdam-python-asp-service.herokuapp.com/receiver";
 
 const command2 = [
     { "command": 'metrics', "mode": 'work' }
