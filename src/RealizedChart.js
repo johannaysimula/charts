@@ -6,8 +6,8 @@ import Chart from "react-apexcharts";
 import { useEffect, useState } from 'react';
 
 //const API_HOST = "http://localhost:3000";
-//const ASP_HOST = "http://localhost:5000/receiver";
-const ASP_HOST = "https://bcdam-python-asp-service.herokuapp.com/receiver";
+const ASP_HOST = "http://localhost:5000/receiver";
+//const ASP_HOST = "https://bcdam-python-asp-service.herokuapp.com/receiver";
 
 
 
@@ -175,9 +175,7 @@ function RealizedChart() {
 
     useEffect(() => {
         //if (inputFields.length==0) 
-        var jrbc = [];
-        var jrbcCummulative = [];
-        var jrbcXCummulative = [];
+        
         var jrbcConstructionXCummulative = [];
 
         for (let i = 0; i < jsonResponseCostConstruction.length; i++) {
