@@ -31,7 +31,7 @@ export default function App() {
 
             <p class="chart-title">Realized Benefit, Cost and Benefit/Cost</p>
             <div id="realized-chart"></div>
-            
+            <RealizedChart />
 
 
           </div>
