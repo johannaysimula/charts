@@ -7,9 +7,7 @@ const API_HOST = "https://bcdam-json-server.herokuapp.com";
 //const API_HOST = "http://bcdam.ddns.net:3000";
 const BACKLOG_API_URL = `${API_HOST}/backlog`;
 //const ASP_HOST = "http://localhost:5000/receiver";
-const ASP_HOST = "https://bcdam-python-asp-service-extra.herokuapp.com";
-const POSE_PROBLEM_URL = `${ASP_HOST}/problem`;
-const GET_ANSWER_URL = `${ASP_HOST}/answer`;
+const ASP_HOST = "https://bcdam-python-asp-service-extra.herokuapp.com/receiver";
 
 const command2 = [
     { "command": 'metrics', "mode": 'work' }
@@ -64,36 +62,13 @@ function ScheduleChart() {
     var jsonResponseListConstruction = {};
     var jsonResponseListProduction = {};
 
-    function poseProblem() {
-        // Get the reciever endpoint from Python using fetch:
-        fetch(`${POSE_PROBLEM_URL}`,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                // Strigify the payload into JSON:
-                body: JSON.stringify(command2)
-            }).then(res => {
-                if (res.ok) {
-                    return res.json()
-                } else {
-                    alert("poseProblem: something is wrong")
-                }
-            }).then(jsonResponse => {
-
-                console.log("ScheduleChart poseProblem jsonResponse: ", jsonResponse)
-            })
-    }
-
 
     // Create an event listener on the button element:
     function Schedule() {
         // Get the reciever endpoint from Python using fetch:
-        fetch(`${GET_ANSWER_URL}`,
+        fetch(`${ASP_HOST}`,
             {
-                method: 'GET',
+                method: 'POST',
                 headers: {
                     'Content-type': 'application/json',
                     'Accept': 'application/json'
