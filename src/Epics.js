@@ -326,7 +326,7 @@ function Epics() {
                 })}
 
                 <div class="parameters-container">
-                    <label>Cost Capacity:</label>
+                    <label>Time Capacity:</label>
                     <input
                         name='capacity'
                         placeholder='capacity'
