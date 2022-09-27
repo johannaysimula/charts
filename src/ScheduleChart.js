@@ -78,8 +78,7 @@ function ScheduleChart() {
                 // Strigify the payload into JSON:
                 body: JSON.stringify(command2)
             }).then(res => {
-                if (res.ok) {
-                    setproblemPosed(1);
+                if (res.ok) {                    
                     return res.json()
                 } else {
                     alert("poseProblem: something is wrong")
@@ -167,13 +166,15 @@ function ScheduleChart() {
 
     useEffect(() => {
         poseProblem();
+        setproblemPosed(1)
         
     }, [backlog]);
 
     useEffect(() => {
          Schedule();
+         setproblemPosed(0)
 
-    }, [problemPosed]);
+    }, [backlog, problemPosed]);
 
 
 
