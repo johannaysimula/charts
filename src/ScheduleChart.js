@@ -49,7 +49,7 @@ function ScheduleChart() {
                 if (res.ok) {
                     return res.json()
                 } else {
-                    alert("something in fetchBacklog is wrong")
+                    alert("ScheduleChart: something in fetchBacklog is wrong")
                 }
             }
             )
@@ -79,7 +79,7 @@ function ScheduleChart() {
                 if (res.ok) {
                     return res.json()
                 } else {
-                    alert("something is wrong")
+                    alert("ScheduleChart Schedule: something is wrong")
                 }
             }).then(jsonResponse => {
 
