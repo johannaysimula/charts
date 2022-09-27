@@ -39,7 +39,7 @@ function ScheduleChart() {
     const [seriesh, setseriesh] = useState([]);
 
     const [problemPosed, setproblemPosed] = useState(0);
-    
+
     const fetchBacklog = () => {
         fetch(`${BACKLOG_API_URL}`, {
             method: 'GET',
@@ -78,7 +78,9 @@ function ScheduleChart() {
                 // Strigify the payload into JSON:
                 body: JSON.stringify(command2)
             }).then(res => {
-                if (res.ok) {                    
+                if (res.ok) {
+                    console.log("ScheduleChart poseProblem jsonResponse: ", jsonResponse)
+                    setproblemPosed(1)
                     return res.json()
                 } else {
                     alert("poseProblem: something is wrong")
@@ -86,6 +88,7 @@ function ScheduleChart() {
             }).then(jsonResponse => {
 
                 console.log("ScheduleChart poseProblem jsonResponse: ", jsonResponse)
+                setproblemPosed(1)
             })
     }
 
@@ -99,7 +102,7 @@ function ScheduleChart() {
                 headers: {
                     'Content-type': 'application/json',
                     'Accept': 'application/json'
-                }                
+                }
             }).then(res => {
                 if (res.ok) {
                     return res.json()
@@ -142,22 +145,22 @@ function ScheduleChart() {
                     }
                 }
 
-                seriesx = backlog.map(b => (new serieselement('epic ' + b.epic,  [{ x: 'Production', y: jsonResponseListProduction[b.epic]},
+                seriesx = backlog.map(b => (new serieselement('epic ' + b.epic, [{ x: 'Production', y: jsonResponseListProduction[b.epic] },
                 { x: 'Construction', y: jsonResponseListConstruction[b.epic] },
                 { x: 'Backlog', y: jsonResponseListBacklog[b.epic] }])))
-                
+
                 setseriesh(seriesx);
 
                 console.log("seriesh: ", seriesh)
                 console.log("seriesx: ", seriesx)
-                
+
             }
 
             ).catch((err) => console.error(err));
-        
+
 
     }
-    
+
 
 
     useEffect(() => {
@@ -166,13 +169,13 @@ function ScheduleChart() {
 
     useEffect(() => {
         poseProblem();
-        setproblemPosed(1)
-        
+
+
     }, [backlog]);
 
     useEffect(() => {
-         Schedule();
-         setproblemPosed(0)
+        Schedule();
+        setproblemPosed(0)
 
     }, [backlog, problemPosed]);
 
@@ -184,12 +187,12 @@ function ScheduleChart() {
             text: 'Loading...'
         },
         colors: ["#cc3c43",
-        "#f5b74f",
-        "#ccec43",
-        "#367852",
-        "#246dec",            
-           
-            
+            "#f5b74f",
+            "#ccec43",
+            "#367852",
+            "#246dec",
+
+
             "#4f35a1",
             "#4f35ff",
         ],
@@ -200,7 +203,7 @@ function ScheduleChart() {
         },
         yaxis: {
             title: {
-               
+
             }
         },
         dataLabels: {
