@@ -83,11 +83,9 @@ function ScheduleChart() {
                 } else {
                     alert("poseProblem: something is wrong")
                 }
-            }).then(jsonResponse => {
-
-                console.log("ScheduleChart poseProblem jsonResponse: ", jsonResponse)
+            }).then(
                 setproblemPosed(1)
-            })
+            )
     }
 
 
@@ -167,7 +165,7 @@ function ScheduleChart() {
 
     useEffect(() => {
         poseProblem();
-        setproblemPosed(1)
+        //setproblemPosed(1)
 
 
     }, [backlog]);
@@ -176,7 +174,7 @@ function ScheduleChart() {
         Schedule();
         setproblemPosed(0)
 
-    }, [backlog, problemPosed]);
+    }, [problemPosed]);
 
 
 
