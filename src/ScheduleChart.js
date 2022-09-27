@@ -37,6 +37,8 @@ function ScheduleChart() {
     ])
 
     const [seriesh, setseriesh] = useState([]);
+
+    const [problemPosed, setproblemPosed] = useState(0);
     
     const fetchBacklog = () => {
         fetch(`${BACKLOG_API_URL}`, {
@@ -77,6 +79,7 @@ function ScheduleChart() {
                 body: JSON.stringify(command2)
             }).then(res => {
                 if (res.ok) {
+                    setproblemPosed(1);
                     return res.json()
                 } else {
                     alert("poseProblem: something is wrong")
@@ -165,9 +168,15 @@ function ScheduleChart() {
     }, []);
 
     useEffect(() => {
-        Schedule();
-
+        poseProblem();
+        
     }, [backlog]);
+
+    useEffect(() => {
+         Schedule();
+
+    }, [problemPosed]);
+
 
 
     const options = {
