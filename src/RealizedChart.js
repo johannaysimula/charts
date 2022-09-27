@@ -87,7 +87,7 @@ function RealizedChart() {
                 if (res.ok) {
                     return res.json()
                 } else {
-                    alert("something is wrong")
+                    alert("RealizedCharts Metrics: something is wrong")
                 }
             }).then(jsonResponse => {
 
