@@ -79,8 +79,8 @@ function ScheduleChart() {
                 body: JSON.stringify(command2)
             }).then(res => {
                 if (res.ok) {
-                    console.log("ScheduleChart poseProblem jsonResponse: ", jsonResponse)
-                    setproblemPosed(1)
+                    console.log("ScheduleChart poseProblem jsonResponse: ", jsonResponse);
+                    setproblemPosed(1);
                     return res.json()
                 } else {
                     alert("poseProblem: something is wrong")
