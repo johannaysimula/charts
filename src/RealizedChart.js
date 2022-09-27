@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 
 //const API_HOST = "http://localhost:3000";
 //const ASP_HOST = "http://localhost:5000/receiver";
-const ASP_HOST = "https://bcdam-python-asp-service-extra.herokuapp.com/receiver";
+const ASP_HOST = "https://bcdam-python-asp-service.herokuapp.com/receiver";
 
 
 
