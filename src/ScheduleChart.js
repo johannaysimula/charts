@@ -100,9 +100,7 @@ function ScheduleChart() {
                 headers: {
                     'Content-type': 'application/json',
                     'Accept': 'application/json'
-                },
-                // Strigify the payload into JSON:
-                body: JSON.stringify(command2)
+                }                
             }).then(res => {
                 if (res.ok) {
                     return res.json()
