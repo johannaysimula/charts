@@ -6,6 +6,7 @@ import Epics from "./Epics";
 
 
 export default function App() {
+  console.log("App starts")
   return (
     <div className="App">
 

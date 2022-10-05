@@ -66,8 +66,8 @@ function ScheduleChart() {
     var jsonResponseListConstruction = {};
     var jsonResponseListProduction = {};
 
-    function poseProblem() {
-        // Get the reciever endpoint from Python using fetch:
+    // Trigger the backend to specify optimiztion problem and work on it in the background:
+    function poseProblem() {        
         fetch(`${POSE_PROBLEM_URL}`,
             {
                 method: 'POST',
@@ -89,9 +89,8 @@ function ScheduleChart() {
     }
 
 
-    // Create an event listener on the button element:
+    // Get the optimization result from the backend:
     function Schedule() {
-        // Get the reciever endpoint from Python using fetch:
         fetch(`${GET_ANSWER_URL}`,
             {
                 method: 'GET',
@@ -106,11 +105,7 @@ function ScheduleChart() {
                     alert("ScheduleChart Schedule: something is wrong")
                 }
             }).then(jsonResponse => {
-
                 console.log("jsonResponse: ", jsonResponse)
-
-
-
 
                 function generateResponseList(backlogitem, keyword, list) {
                     var l = [];
