@@ -53,7 +53,12 @@ function prepareMetricsData(response) {
 };
 //var responseListBenefitrealized=[];
 //var responseListBenefitrealizedT=[];
-function RealizedChart() {
+function RealizedChart({ optimization_criterion }) {
+
+    console.log("RealizedChart: optimization_criterion: ", optimization_criterion)
+
+    
+
 
     const [jsonResponseBenefit, setjsonResponseBenefit] = useState([]);
     const [jsonResponseBenefitCummulative, setjsonResponseBenefitCummulative] = useState([]);
@@ -175,7 +180,7 @@ function RealizedChart() {
 
     useEffect(() => {
         //if (inputFields.length==0) 
-        
+
         var jrbcConstructionXCummulative = [];
 
         for (let i = 0; i < jsonResponseCostConstruction.length; i++) {

@@ -42,20 +42,16 @@ export default function App() {
             <p class="chart-title">Epics estimates</p>
             <div id="epics-chart"></div>
             <Epics />
-            <p >
-            <button class="processButton" onClick={bctc}>Optimize benefit/cost per time in construction</button></p>
-            <p ><button class="processButton" onClick={bp}>Optimize benefit in production</button></p>
           </div>
-          
-          
+
           <div class="charts-card">
             <p class="chart-title">Schedule</p>
             <div id="schedule-chart"></div>
-            <ScheduleChart optimization_criterion={buttonStatus} />
+            {buttonStatus !== "None" ? (<ScheduleChart optimization_criterion={buttonStatus} />) : ("Waiting for optimization choice")}
 
             <p class="chart-title">Realized Benefit, Cost and Benefit/Cost</p>
             <div id="realized-chart"></div>
-            <RealizedChart optimization_criterion={buttonStatus} />
+            {buttonStatus === "Ready" ? (<RealizedChart optimization_criterion={buttonStatus} />) : ("Waiting for optimization choice")}
           </div>
 
           <div class="charts-card">
@@ -64,7 +60,9 @@ export default function App() {
             
           </div>
         </div>
-        
+        <button onClick={bctc}>Optimize benefit/cost per time in construction</button>
+        <button onClick={bp}>Optimize benefit in production</button>
+
       </main >
     </div >
     //setButtonStatus("None")

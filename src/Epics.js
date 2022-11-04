@@ -17,7 +17,7 @@ const CALCULATION_API_URL = `${CALC_HOST}/calculation`;
 function Epics() {
 
     const [backlog, setbacklog] = useState([
-        { epic: '', benefit: '', cost: '', time: '', id: 0}
+        { epic: '', benefit: '', cost: '', time: '', id: 0 }
     ])
 
     const [parameters, setparameters] = useState(
@@ -62,8 +62,8 @@ function Epics() {
     }
 
     const addFields = () => {
-        let newfield = { epic: '', benefit: '', cost: '', time: '', id: backlog.length+1 }
-        console.log("addFieklds backlog[backlog.length] : ",backlog.length+1 )
+        let newfield = { epic: '', benefit: '', cost: '', time: '', id: backlog.length + 1 }
+        console.log("addFieklds backlog[backlog.length] : ", backlog.length + 1)
 
         setbacklog([...backlog, newfield])
         //alert("addfields ", backlog[0])
@@ -127,10 +127,10 @@ function Epics() {
 
     }
 
-    const fetchCalculation = () => {        
+    const fetchCalculation = () => {
         fetch(`${CALCULATION_API_URL}`, {
-            method: 'GET',      
-            headers: {                   
+            method: 'GET',
+            headers: {
                 'Content-type': 'application/json',
                 'Accept': 'application/json'
             }
@@ -319,11 +319,14 @@ function Epics() {
                                 value={calculation.find(e => e.id === input.id)?.benefit_cost}
                                 size="2"
                             />
-                            <button onClick={() => removeFields(index)}>Remove</button>
+
+                            <button class="editButton" onClick={() => removeFields(index)}>Remove</button>
                         </div>
 
                     )
                 })}
+
+                
 
                 <div class="parameters-container">
                     <label>Time Capacity:</label>
@@ -350,9 +353,9 @@ function Epics() {
 
             </form>
 
+            <p><button class="editButton" onClick={addFields}>Add More..</button></p>
+            <p><button class="editButton" onClick={submit}>Submit</button></p>
 
-            <button onClick={addFields}>Add More..</button>
-            <button onClick={submit}>Submit</button>
         </div>
     );
 }
