@@ -138,13 +138,7 @@ export default function ScheduleChart({ optimization_criterion }) {
     useEffect(() => {
         console.log("useffect on backlog open socket")
 
-        const socket = io("https://bcdam-python-asp-service-extra.herokuapp.com/0.0.0.0", {
-            transports: ["websocket"],
-            cors: {
-                origin: "http://localhost:3000/",
-            }
-
-        });
+        const socket = io("https://bcdam-python-asp-service-extra.herokuapp.com/0.0.0.0");
 
         setSocketInstance(socket);
         
