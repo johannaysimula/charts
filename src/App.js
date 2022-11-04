@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react';
 
 export default function App() {
   console.log("App starts");
-  const [buttonStatus, setButtonStatus] = useState("None");
+  const [buttonStatus, setButtonStatus] = useState("bctc");
 
   const bctc = () => {
     setButtonStatus("bctc");
