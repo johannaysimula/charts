@@ -10,7 +10,7 @@ const BACKLOG_API_URL = `${API_HOST}/backlog`;
 //const ASP_HOST = "http://localhost:5000/receiver";
 const ASP_HOST = "https://bcdam-python-asp-service-extra.herokuapp.com/0.0.0.0";
 //const ASP_HOST = "http://localhost:5001"
-const POSE_PROBLEM_URL = `${ASP_HOST}/problem`;
+const POSE_PROBLEM_URL = `${ASP_HOST}/problem`; 
 const GET_ANSWER_URL = `${ASP_HOST}/answer`;
 
 const command2 = [
