@@ -8,8 +8,8 @@ const API_HOST = "https://bcdam-json-server.herokuapp.com";
 //const API_HOST = "http://bcdam.ddns.net:3000";
 const BACKLOG_API_URL = `${API_HOST}/backlog`;
 //const ASP_HOST = "http://localhost:5000/receiver";
-//const ASP_HOST = "https://bcdam-python-asp-service-extra.herokuapp.com/0.0.0.0";
-const ASP_HOST = "http://localhost:5001"
+const ASP_HOST = "https://bcdam-python-asp-service-extra.herokuapp.com/0.0.0.0";
+//const ASP_HOST = "http://localhost:5001"
 const POSE_PROBLEM_URL = `${ASP_HOST}/problem`; 
 const GET_ANSWER_URL = `${ASP_HOST}/answer`;
 
@@ -138,8 +138,11 @@ export default function ScheduleChart({ optimization_criterion }) {
     useEffect(() => {
         console.log("useffect on backlog open socket")
 
-        const socket = io("https://bcdam-python-asp-service-extra.herokuapp.com", {
-            transports: ["websocket"]
+        const socket = io(`${ASP_HOST}`, {
+            transports: ["websocket"],
+            cors: {
+              origin: "http://localhost:3000/",
+            },
 
         });
 
