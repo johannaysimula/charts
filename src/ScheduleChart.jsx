@@ -140,9 +140,6 @@ export default function ScheduleChart({ optimization_criterion }) {
 
         const socket = io("https://bcdam-python-asp-service-extra.herokuapp.com", {
             transports: ["websocket"],
-            cors: {
-              origin: "http://localhost:3000/",
-            },
 
         });
 
