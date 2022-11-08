@@ -151,7 +151,7 @@ export default function ScheduleChart({ optimization_criterion }) {
         
 
         socket.on('connect', (msg) => {
-            console.log("client: useffect on backlog connect: ", msg);
+            console.log("client: useffect on backlog connect: ");
         }); 
 
         //socket.emit('preparedata', optimization_criterion);
