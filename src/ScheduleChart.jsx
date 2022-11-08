@@ -145,9 +145,9 @@ export default function ScheduleChart({ optimization_criterion }) {
             },
 
         });
-       
+        console.log("socket: ", socket.id);
 
-        setSocketInstance(socket);
+        //setSocketInstance(socket);
         
 
         socket.on('connect', (msg) => {
