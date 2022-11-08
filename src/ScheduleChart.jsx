@@ -150,7 +150,7 @@ export default function ScheduleChart({ optimization_criterion }) {
         setSocketInstance(socket);
         
 
-        socket.on('connection', (msg) => {
+        socket.on('connect', (msg) => {
             console.log("client: useffect on backlog connect: ", msg);
         }); 
 
