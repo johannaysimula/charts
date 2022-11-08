@@ -141,7 +141,7 @@ export default function ScheduleChart({ optimization_criterion }) {
         const socket = io(`${ASP_HOST}`, {
             transports: ["websocket"],
             cors: {
-              origin: "wss://bcdam.herokuapp.com:35651/ws",
+              origin: "http://localhost:3000",
             },
 
         });
