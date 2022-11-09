@@ -137,12 +137,13 @@ export default function ScheduleChart({ optimization_criterion }) {
 
     useEffect(() => {
         console.log("useffect on backlog open socket")
-        console.log("port: ", process.env.PORT)
+        console.log("port: ", process.env.$REACT_APP_PORT)
+        //nowport = process.env.PORT || process.env.REACT_APP_PORT || 1260, userSession
 
         const socket = io(`${ASP_HOST}`, {
             transports: ["websocket"],
             cors: {
-              origin:["https://localhost:3000","http://localhost:3000","http://bcdam.herokupp.com","https://bcdam.herokuapp.com","wss://bcdam.herokuapp.com","ws://bcdam.herokuapp.com"],
+              origin:["https://localhost:3000","http://localhost:3000","http://bcdam.herokupp.com + process.env.PORT || process.env.REACT_APP_PORT","https://bcdam.herokuapp.com","wss://bcdam.herokuapp.com","ws://bcdam.herokuapp.com"],
             },
 
         });
