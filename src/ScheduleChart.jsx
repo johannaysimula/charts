@@ -140,7 +140,13 @@ export default function ScheduleChart({ optimization_criterion }) {
         console.log("port: ", process.env.$REACT_APP_PORT)
         //nowport = process.env.PORT || process.env.REACT_APP_PORT || 1260, userSession
 
-        const socket = io(`${ASP_HOST}`);
+        const socket = io(`${ASP_HOST}`, {
+            transports: ["websocket"],
+            cors: {
+              origin:["wss://bcdam.herokuapp.com:" + process.env.PORT || process.env.REACT_APP_PORT ],
+            },
+
+        });
         console.log("socket: ", socket);
 
         setSocketInstance(socket);
