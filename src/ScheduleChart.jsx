@@ -139,18 +139,25 @@ export default function ScheduleChart({ optimization_criterion }) {
         console.log("useffect on backlog open socket")
         console.log("env: ", process.env)
         //nowport = process.env.PORT || process.env.REACT_APP_PORT || 1260, userSession
-        
+      
 
-        const socket = io(`${ASP_HOST}`, {
+const manager = new Manager(`${ASP_HOST}`, {
+  reconnectionDelayMax: 10000,
+  engine: {
+    port: 17181
+  }
+});
+        
+        const socket = manager.socket("/", {
             transports: ["websocket"],
             cors: {
               origin:["https://bcdam.herokuapp.com"],
             },
 
         });
-
+        console.log("socket1: ", socket);
         console.log("manager port:", socket.io.engine.port);
-        socket.io.engine.port = 17181;
+        //socket.io.engine.port = 17181;
         console.log("manager port:", socket.io.engine.port);
         
         console.log("socket: ", socket);
