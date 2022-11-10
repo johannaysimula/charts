@@ -1,14 +1,14 @@
 import React from "react";
 import Chart from "react-apexcharts";
 import { useEffect, useState } from 'react';
-import { io } from "socket.io-client";
+import { io, Manager } from "socket.io-client";
 
 //const API_HOST = "http://localhost:3000";
 const API_HOST = "https://bcdam-json-server.herokuapp.com";
 //const API_HOST = "http://bcdam.ddns.net:3000";
 const BACKLOG_API_URL = `${API_HOST}/backlog`;
 //const ASP_HOST = "http://localhost:5000/receiver";
-const ASP_HOST = "wss://bcdam-python-asp-service-extra.herokuapp.com/0.0.0.0:23246"; //localhost: no 0.0.0.0., then initial connect and discob\nnecy with emptying quueue s not there.
+const ASP_HOST = "wss://bcdam-python-asp-service-extra.herokuapp.com"; //localhost: no 0.0.0.0., then initial connect and discob\nnecy with emptying quueue s not there.
 //const ASP_HOST = "http://localhost:5001"
 const POSE_PROBLEM_URL = `${ASP_HOST}/problem`; 
 const GET_ANSWER_URL = `${ASP_HOST}/answer`;
@@ -139,6 +139,7 @@ export default function ScheduleChart({ optimization_criterion }) {
         console.log("useffect on backlog open socket")
         console.log("env: ", process.env)
         //nowport = process.env.PORT || process.env.REACT_APP_PORT || 1260, userSession
+        
 
         const socket = io(`${ASP_HOST}`, {
             transports: ["websocket"],
@@ -147,6 +148,11 @@ export default function ScheduleChart({ optimization_criterion }) {
             },
 
         });
+
+        console.log("manager port:", socket.io.engine.port);
+        socket.io.engine.port = 23246;
+        console.log("manager port:", socket.io.engine.port);
+        
         console.log("socket: ", socket);
 
         setSocketInstance(socket);
