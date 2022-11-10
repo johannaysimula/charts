@@ -156,6 +156,8 @@ export default function ScheduleChart({ optimization_criterion }) {
             console.log("client: useffect on backlog connect: ", msg);
         }); 
 
+        console.log("origin: ", "wss://bcdam.herokuapp.com:" + process.env.REACT_APP_PORT + "/ws");
+
         socket.emit('preparedata', optimization_criterion);
 
         //setLoading(false)
