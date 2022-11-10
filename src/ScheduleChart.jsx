@@ -143,7 +143,7 @@ export default function ScheduleChart({ optimization_criterion }) {
         const socket = io(`${ASP_HOST}`, {
             transports: ["websocket"],
             cors: {
-              origin:["wss://bcdam.herokuapp.com: + process.env.PORT || process.env.REACT_APP_PORT + /ws"],
+              
             },
 
         });
@@ -152,8 +152,8 @@ export default function ScheduleChart({ optimization_criterion }) {
         setSocketInstance(socket);
         
 
-        socket.on('connect', () => {
-            console.log("client: useffect on backlog connect: ");
+        socket.on('connect', (msg) => {
+            console.log("client: useffect on backlog connect: ", msg);
         }); 
 
         socket.emit('preparedata', optimization_criterion);
