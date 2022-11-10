@@ -10,7 +10,7 @@ const BACKLOG_API_URL = `${API_HOST}/backlog`;
 //const ASP_HOST = "http://localhost:5000/receiver";
 const ASP_HOST = "wss://bcdam-python-asp-service-extra.herokuapp.com"; //localhost: no 0.0.0.0., then initial connect and discob\nnecy with emptying quueue s not there.
 //const ASP_HOST = "http://localhost:5001"
-const POSE_PROBLEM_URL = `${ASP_HOST}/problem`; 
+const POSE_PROBLEM_URL = `${ASP_HOST}/problem`;
 const GET_ANSWER_URL = `${ASP_HOST}/answer`;
 
 const command2 = [
@@ -78,9 +78,9 @@ export default function ScheduleChart({ optimization_criterion }) {
     var jsonResponseListConstruction = {};
     var jsonResponseListProduction = {};
 
-    
 
-    function makeSeries(jsonResponse){
+
+    function makeSeries(jsonResponse) {
         function generateResponseList(backlogitem, keyword, list) {
             var l = [];
             console.log("generateResponseList backlogitem: ", backlogitem.epic)
@@ -130,28 +130,27 @@ export default function ScheduleChart({ optimization_criterion }) {
 
 
     useEffect(() => {
-        
-            fetchBacklog();
-        
-    },[optimization_criterion]);
+
+        fetchBacklog();
+
+    }, [optimization_criterion]);
 
     useEffect(() => {
         console.log("useffect on backlog open socket")
         console.log("env: ", process.env)
         //nowport = process.env.PORT || process.env.REACT_APP_PORT || 1260, userSession
-      
 
-const manager = new Manager(`${ASP_HOST}`, {
-  reconnectionDelayMax: 10000,
-  engine: {
-    port: 17181
-  }
-});
-        
+
+        const manager = new Manager(`${ASP_HOST}`);
+        manager.engine.port=17181;
+        manager.opts.port=17181;
+
+        console.log("manager: ", manager);
+
         const socket = manager.socket("/", {
             transports: ["websocket"],
             cors: {
-              origin:["https://bcdam.herokuapp.com"],
+                origin: ["https://bcdam.herokuapp.com"],
             },
 
         });
@@ -159,15 +158,15 @@ const manager = new Manager(`${ASP_HOST}`, {
         console.log("manager port:", socket.io.engine.port);
         //socket.io.engine.port = 17181;
         console.log("manager port:", socket.io.engine.port);
-        
+
         console.log("socket: ", socket);
 
         setSocketInstance(socket);
-        
+
 
         socket.on('connect', (msg) => {
             console.log("client: useffect on backlog connect: ", msg);
-        }); 
+        });
 
         //console.log("origin: ", "wss://bcdam.herokuapp.com:" + process.env.REACT_APP_PORT + "/ws");
 
@@ -176,21 +175,21 @@ const manager = new Manager(`${ASP_HOST}`, {
         //setLoading(false)
 
         socket.on('status', (msg) => {
-            console.log("client got status: " , msg);
+            console.log("client got status: ", msg);
             socket.emit('senddata', "I'd lke the next answer, please")
         });
 
         socket.on('data', (msg) => {
-            console.log("client got data: " , msg.data);
-            const [car, ...cdr] = msg.data ;
+            console.log("client got data: ", msg.data);
+            const [car, ...cdr] = msg.data;
             console.log("cdr: ", cdr);
             makeSeries(cdr)
             //socket.emit('senddata', "I'd lke the next answer, please")
         });
 
         socket.on('end', (msg) => {
-            console.log("client got end: " , msg);
-            
+            console.log("client got end: ", msg);
+
         });
 
         //setLoading(false);
