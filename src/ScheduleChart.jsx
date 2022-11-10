@@ -150,7 +150,7 @@ export default function ScheduleChart({ optimization_criterion }) {
         });
 
         console.log("manager port:", socket.io.engine.port);
-        socket.io.engine.port = 24967;
+        socket.io.engine.port = 17181;
         console.log("manager port:", socket.io.engine.port);
         
         console.log("socket: ", socket);
