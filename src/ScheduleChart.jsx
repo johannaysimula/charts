@@ -143,8 +143,8 @@ export default function ScheduleChart({ optimization_criterion }) {
 
         const manager = new Manager(`${ASP_HOST}`);
         manager.opts.path='/0.0.0.0';
-        manager.engine.port=9537;
-        manager.opts.port=9537;
+        manager.engine.port=6450;
+        manager.opts.port=6450;
 
         console.log("manager: ", manager);
 
