@@ -170,13 +170,13 @@ export default function ScheduleChart({ optimization_criterion }) {
 
         //console.log("origin: ", "wss://bcdam.herokuapp.com:" + process.env.REACT_APP_PORT + "/ws");
 
-        socket.emit('preparedata');
+        socket.emit('preparedata', "Prepare the optimization program, please.");
 
         //setLoading(false)
 
         socket.on('status', (msg) => {
             console.log("client got status: ", msg);
-            socket.emit('senddata')
+            socket.emit('senddata', "I'd lke the next answer, please")
         });
 
         socket.on('data', (msg) => {
