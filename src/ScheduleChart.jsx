@@ -176,7 +176,7 @@ export default function ScheduleChart({ optimization_criterion }) {
 
         socket.on('status', (msg) => {
             console.log("client got status: ", msg);
-            socket.emit('senddata', "I'd lke the next answer, please")
+            socket.emit('senddata')
         });
 
         socket.on('data', (msg) => {
