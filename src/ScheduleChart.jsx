@@ -170,7 +170,7 @@ export default function ScheduleChart({ optimization_criterion }) {
 
         //console.log("origin: ", "wss://bcdam.herokuapp.com:" + process.env.REACT_APP_PORT + "/ws");
 
-        socket.emit('preparedata', "Please prepare optimization data.");
+        socket.emit('preparedata', optimization_criterion);
 
         //setLoading(false)
 
