@@ -176,8 +176,8 @@ export default function ScheduleChart({ optimization_criterion }) {
 
         const manager = new Manager(`${ASP_HOST}:` + ASPHostPort);
         //manager.opts.path='/0.0.0.0';
-        //manager.engine.port=ASPHostPort;
-        //manager.opts.port=ASPHostPort;
+        manager.engine.port=ASPHostPort;
+        manager.opts.port=ASPHostPort;
 
         //console.log("manager: ", manager);
 // check manager.nsps
