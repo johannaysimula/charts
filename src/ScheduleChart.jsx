@@ -241,7 +241,7 @@ export default function ScheduleChart({ optimization_criterion }) {
             socket.disconnect();
         };
 
-    }, [backlog, ASPHostPort !== 0]);
+    }, [backlog, ASPHostPort !== "0"]);
 
     //useEffect(() => {
     //   if (loading === true){
