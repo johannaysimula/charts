@@ -181,6 +181,8 @@ export default function ScheduleChart({ optimization_criterion }) {
 
         //console.log("manager: ", manager);
 // check manager.nsps
+console.log(`${ASP_HOST}` + ASPHostPort)
+
         const socket = io(`${ASP_HOST}` + ASPHostPort, {
             transports: ["websocket"],
             cors: {
