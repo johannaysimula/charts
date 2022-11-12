@@ -174,7 +174,7 @@ export default function ScheduleChart({ optimization_criterion }) {
         //nowport = process.env.PORT || process.env.REACT_APP_PORT || 1260, userSession
 
 
-        //const manager = new Manager(`${ASP_HOST}/` + ASPHostPort);
+        const manager = new Manager(`${ASP_HOST}:` + ASPHostPort);
         //manager.opts.path='/0.0.0.0';
         //manager.engine.port=ASPHostPort;
         //manager.opts.port=ASPHostPort;
@@ -183,7 +183,7 @@ export default function ScheduleChart({ optimization_criterion }) {
 // check manager.nsps
 console.log(`${ASP_HOST}:` + ASPHostPort)
 
-        const socket = io(`${ASP_HOST}:` + ASPHostPort, {
+        const socket = manager.socket('\0.0.0.0', {
             transports: ["websocket"],
             cors: {
                 origin: ["https://bcdam.herokuapp.com/","http://localhost:3000/"],
