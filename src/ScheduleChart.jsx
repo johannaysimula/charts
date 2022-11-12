@@ -8,8 +8,8 @@ const API_HOST = "https://bcdam-json-server.herokuapp.com";
 //const API_HOST = "http://bcdam.ddns.net:3000";
 const BACKLOG_API_URL = `${API_HOST}/backlog`;
 //const ASP_HOST = "http://localhost:5000/receiver";
-const ASP_HOST = "wss://bcdam-python-asp-service-extra.herokuapp.com"; //localhost: no 0.0.0.0., then initial connect and discob\nnecy with emptying quueue s not there.
-//const ASP_HOST = "http://localhost:5001"
+const ASP_HOST = "wss://bcdam-python-asp-service-extra.herokuapp.com/"; //localhost: no 0.0.0.0., then initial connect and discob\nnecy with emptying quueue s not there.
+//const ASP_HOST = "http://localhost:5001/"
 const POSE_PROBLEM_URL = `${ASP_HOST}/problem`;
 const GET_ANSWER_URL = `${ASP_HOST}/answer`;
 
@@ -142,16 +142,16 @@ export default function ScheduleChart({ optimization_criterion }) {
 
 
         const manager = new Manager(`${ASP_HOST}`);
-        manager.opts.path='/0.0.0.0';
-        manager.engine.port=6450;
-        manager.opts.port=6450;
+        //manager.opts.path='/0.0.0.0';
+        //manager.engine.port=6450;
+        //manager.opts.port=6450;
 
-        console.log("manager: ", manager);
-
-        const socket = manager.socket("/", {
+        //console.log("manager: ", manager);
+// check manager.nsps
+        const socket = io(`${ASP_HOST}`, {
             transports: ["websocket"],
             cors: {
-                origin: ["https://bcdam.herokuapp.com"],
+                origin: ["https://bcdam.herokuapp.com/","http://localhost:3000/"],
             },
 
         });
