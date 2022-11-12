@@ -8,7 +8,7 @@ const API_HOST = "https://bcdam-json-server.herokuapp.com";
 //const API_HOST = "http://bcdam.ddns.net:3000";
 const BACKLOG_API_URL = `${API_HOST}/backlog`;
 //const ASP_HOST = "http://localhost:5000/receiver";
-const ASP_HOST = "wss://bcdam-python-asp-service-extra.herokuapp.com:443/"; //localhost: no 0.0.0.0., then initial connect and discob\nnecy with emptying quueue s not there.
+const ASP_HOST = "wss://bcdam-python-asp-service-extra.herokuapp.com/"; //localhost: no 0.0.0.0., then initial connect and discob\nnecy with emptying quueue s not there.
 //const ASP_HOST = "http://localhost:5001/"
 const POSE_PROBLEM_URL = `${ASP_HOST}/problem`;
 const GET_ANSWER_URL = `${ASP_HOST}/answer`;
@@ -47,6 +47,8 @@ export default function ScheduleChart({ optimization_criterion }) {
     const [problemPosed, setproblemPosed] = useState(0);
 
     const [numCalls, setnumCalls] = useState(0);
+
+    const [ASPHostPort, setASPHostPort] = useState(0);
 
 
 
@@ -127,6 +129,28 @@ export default function ScheduleChart({ optimization_criterion }) {
     //     });
     //  }, [socket]);
 
+    const fetchPort = () => {
+        console.log("fecthPort starts")
+        fetch(`${ASP_HOST}getport`, {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            }
+        }
+        )
+            .then(res => {
+                if (res.ok) {
+                    return res.json()
+                } else {
+                    alert("ScheduleChart: something in fetchPort is wrong")
+                }
+            }
+            )
+            .then(json => setASPHostPort(json))
+    }
+    
+
 
 
     useEffect(() => {
@@ -136,8 +160,16 @@ export default function ScheduleChart({ optimization_criterion }) {
     }, [optimization_criterion]);
 
     useEffect(() => {
+
+        fetchPort();
+        
+
+    }, [backlog]);
+
+    useEffect(() => {
         console.log("useffect on backlog open socket")
-        console.log("env: ", process.env)
+        console.log("env: ", process.env);
+        console.log("ASPHostPort: ",ASPHostPort);
         //nowport = process.env.PORT || process.env.REACT_APP_PORT || 1260, userSession
 
 
@@ -208,7 +240,7 @@ export default function ScheduleChart({ optimization_criterion }) {
             socket.disconnect();
         };
 
-    }, [backlog]);
+    }, [backlog, ASPHostPort != 0]);
 
     //useEffect(() => {
     //   if (loading === true){
