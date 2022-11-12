@@ -189,7 +189,7 @@ console.log(`${ASP_HOST}:` + ASPHostPort)
         const socket = manager.socket('/0.0.0.0', {
             transports: ["websocket"],
             cors: {
-                origin: ["https://bcdam.herokuapp.com/","http://localhost:3000/"],
+                origin: ["https://bcdam.herokuapp.com/"],
             },
 
         });
