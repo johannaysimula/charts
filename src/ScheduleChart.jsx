@@ -181,7 +181,7 @@ export default function ScheduleChart({ optimization_criterion }) {
 
         //console.log("manager: ", manager);
 // check manager.nsps
-        const socket = manager.socket(`${ASP_HOST}/` + ASPHostPort, {
+        const socket = manager.socket('/', {
             transports: ["websocket"],
             cors: {
                 origin: ["https://bcdam.herokuapp.com/","http://localhost:3000/"],
