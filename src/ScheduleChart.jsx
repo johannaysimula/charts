@@ -8,7 +8,7 @@ const API_HOST = "https://bcdam-json-server.herokuapp.com";
 //const API_HOST = "http://bcdam.ddns.net:3000";
 const BACKLOG_API_URL = `${API_HOST}/backlog`;
 //const ASP_HOST = "http://localhost:5000/receiver";
-const ASP_HOST = "https:/bcdam-python-asp-service-extra.herokuapp.com";
+const ASP_HOST = "https:/bcdam-python-asp-service-extra.herokuapp.com/";
 const ASP_HOST_GETPORT = "https://bcdam-python-asp-service-extra.herokuapp.com/getport"; //localhost: no 0.0.0.0., then initial connect and discob\nnecy with emptying quueue s not there.
 //const ASP_HOST = "http://localhost:5001/"
 const POSE_PROBLEM_URL = `${ASP_HOST}/problem`;
@@ -181,7 +181,7 @@ export default function ScheduleChart({ optimization_criterion }) {
 
         //console.log("manager: ", manager);
 // check manager.nsps
-        const socket = io(`${ASP_HOST}/` + ASPHostPort, {
+        const socket = io(`${ASP_HOST}` + ASPHostPort, {
             transports: ["websocket"],
             cors: {
                 origin: ["https://bcdam.herokuapp.com/","http://localhost:3000/"],
@@ -189,9 +189,9 @@ export default function ScheduleChart({ optimization_criterion }) {
 
         });
         console.log("socket1: ", socket);
-        console.log("manager port:", socket.io.engine.port);
+        console.log("socket.io.engine.port:", socket.io.engine.port);
         //socket.io.engine.port = 17181;
-        console.log("manager port:", socket.io.engine.port);
+        console.log("socket.io.engine.port:", socket.io.engine.port);
 
         console.log("socket: ", socket);
 
