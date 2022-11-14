@@ -174,11 +174,11 @@ export default function ScheduleChart({ optimization_criterion }) {
         //nowport = process.env.PORT || process.env.REACT_APP_PORT || 1260, userSession
 
 
-        const manager = new Manager(`${ASP_HOST}:`);
-        //manager.opts.path='/0.0.0.0';
+        const manager = new Manager(`${ASP_HOST}`);
+        manager.opts.path='/0.0.0.0';
         manager.engine.port=ASPHostPort;
         manager.opts.port=ASPHostPort;
-        window.location.port=3000
+        window.location.port
         console.log("window.location.hostname", window.location.hostname)
         console.log("window.location.port", window.location.port)
         
