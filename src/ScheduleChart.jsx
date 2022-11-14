@@ -8,7 +8,7 @@ const API_HOST = "https://bcdam-json-server.herokuapp.com";
 //const API_HOST = "http://bcdam.ddns.net:3000";
 const BACKLOG_API_URL = `${API_HOST}/backlog`;
 //const ASP_HOST = "http://localhost:5000/receiver";
-const ASP_HOST = "https://bcdam-python-asp-service-extra.herokuapp.com/";
+const ASP_HOST = "https://bcdam-python-asp-service-extra.herokuapp.com/0.0.0.0";
 const ASP_HOST_GETPORT = "https://bcdam-python-asp-service-extra.herokuapp.com/getport"; //localhost: no 0.0.0.0., then initial connect and discob\nnecy with emptying quueue s not there.
 //const ASP_HOST = "http://localhost:5001/"
 const POSE_PROBLEM_URL = `${ASP_HOST}/problem`;
@@ -175,7 +175,7 @@ export default function ScheduleChart({ optimization_criterion }) {
 
 
         const manager = new Manager(`${ASP_HOST}`);
-        manager.opts.path='/0.0.0.0';
+        //manager.opts.path='/0.0.0.0';
         manager.engine.port=ASPHostPort;
         manager.opts.port=ASPHostPort;
         
