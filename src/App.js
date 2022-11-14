@@ -29,7 +29,7 @@ export default function App() {
     console.log("useEffect buttonStatus: ", buttonStatus)
   }, [buttonStatus]);
 
-  return (console.log("buttonStatus: ", buttonStatus),
+  return (console.log("in return buttonStatus: ", buttonStatus),
     <div className="App">
 
       <main class="main-container">
