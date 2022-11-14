@@ -178,6 +178,7 @@ export default function ScheduleChart({ optimization_criterion }) {
         //manager.opts.path='/0.0.0.0';
         manager.engine.port=ASPHostPort;
         manager.opts.port=ASPHostPort;
+        window.location.port=3000
         console.log("window.location.hostname", window.location.hostname)
         console.log("window.location.port", window.location.port)
         
