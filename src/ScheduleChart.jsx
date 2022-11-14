@@ -190,7 +190,7 @@ export default function ScheduleChart({ optimization_criterion }) {
         const socket = manager.socket('/', {
             transports: ["websocket"],
             cors: {
-                origin: ["wss://bcdam.herokuapp.com/socket.io/3000/ws"],
+                origin: ["wss://bcdam.herokuapp.com/42292/ws"],
             },
 
         });
