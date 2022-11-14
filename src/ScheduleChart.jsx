@@ -179,7 +179,7 @@ export default function ScheduleChart({ optimization_criterion }) {
         manager.engine.port = ASPHostPort;
         manager.opts.port = ASPHostPort;
 
-        console.log("window.location.hostname", window.location.hostname)
+        console.log("window.location", window.location)
         console.log("window.location.port", window.location.port)
 
 
