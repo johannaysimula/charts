@@ -8,9 +8,9 @@ const API_HOST = "https://bcdam-json-server.herokuapp.com";
 //const API_HOST = "http://bcdam.ddns.net:3000";
 const BACKLOG_API_URL = `${API_HOST}/backlog`;
 //const ASP_HOST = "http://localhost:5000/receiver";
-const ASP_HOST = "https://bcdam-python-asp-service-extra.herokuapp.com/0.0.0.0";
+//const ASP_HOST = "https://bcdam-python-asp-service-extra.herokuapp.com/0.0.0.0";
 const ASP_HOST_GETPORT = "https://bcdam-python-asp-service-extra.herokuapp.com/getport"; //localhost: no 0.0.0.0., then initial connect and discob\nnecy with emptying quueue s not there.
-//const ASP_HOST = "http://localhost:5001/"
+const ASP_HOST = "http://localhost:5001/"
 const POSE_PROBLEM_URL = `${ASP_HOST}/problem`;
 const GET_ANSWER_URL = `${ASP_HOST}/answer`;
 
@@ -150,7 +150,7 @@ export default function ScheduleChart({ optimization_criterion }) {
             )
             .then(json => setASPHostPort(json))
     }
-    
+
 
 
 
@@ -163,29 +163,29 @@ export default function ScheduleChart({ optimization_criterion }) {
     useEffect(() => {
 
         fetchPort();
-        
+
 
     }, [backlog]);
 
     useEffect(() => {
         console.log("useffect on backlog open socket")
         console.log("env: ", process.env);
-        console.log("ASPHostPort: ",ASPHostPort);
+        console.log("ASPHostPort: ", ASPHostPort);
         //nowport = process.env.PORT || process.env.REACT_APP_PORT || 1260, userSession
 
 
         const manager = new Manager(`${ASP_HOST}`);
         //manager.opts.path='/0.0.0.0';
-        manager.engine.port=ASPHostPort;
-        manager.opts.port=ASPHostPort;
-        
+        manager.engine.port = ASPHostPort;
+        manager.opts.port = ASPHostPort;
+
         console.log("window.location.hostname", window.location.hostname)
         console.log("window.location.port", window.location.port)
-        
+
 
         //console.log("manager: ", manager);
-// check manager.nsps
-console.log(`${ASP_HOST}:` + ASPHostPort)
+        // check manager.nsps
+        console.log(`${ASP_HOST}:` + ASPHostPort)
 
         const socket = manager.socket('/', {
             transports: ["websocket"],
@@ -207,6 +207,7 @@ console.log(`${ASP_HOST}:` + ASPHostPort)
         socket.on('connect', (msg) => {
             console.log("client: useffect on backlog connect: ", msg);
         });
+
 
         //console.log("origin: ", "wss://bcdam.herokuapp.com:" + process.env.REACT_APP_PORT + "/ws");
 
